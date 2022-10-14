@@ -1,10 +1,10 @@
-#include <studio.h>
+#include <stdio.h>
 /**
- * main - beginning
+ * main - Entry point 
  * Return: Always 0
  */
 int main(void)
 {
 	puts("\"Programmimg is like building a multilingual puzzle");
 	return (0);
-
+}
