@@ -1,30 +1,36 @@
 #include "dog.h"
+#include <stdlib.h>
+
 /**
- * _strdup - returns a pointer to space in memory containing copy of string.
- * @s: pointer to the string.
- * Return: Pointer to a string stored in memory.
+ * new_dog - entry point
+ * @name: string from main, name of pet
+ * @age: number from main, age of pet
+ * @owner: string from main, owner of pet
+ * Return: p
  */
-char *_strdup(char *s)
+
+dog_t *new_dog(char *name, float age, char *owner)
 {
-	char *dup;
-	unsigned int i = 0;
-	unsigned int j = 0;
-
-	if (s == NULL)
+	dog_t *p;
+	/* reserving memory to struct*/
+	p = malloc(sizeof(dog_t));
+	if (p == NULL)
 		return (NULL);
-/*Get the length of the string.*/
-	while (s[i] != '\0')
-		i += 1;
-/*+1 to include the terminating character in size.*/
-	i++;
-
-	dup = malloc(i * sizeof(*dup));
-	if (dup == NULL)
-		return (NULL);
-	while (j < i)
+	/* Cpunting name pointer*/
+	if (name == NULL)
 	{
-		dup[j] = s[j];
-		j++;
+		free(p);
+		free(owner);
+		return (NULL);
 	}
-	return (dup);
+	if (owner == NULL)
+	{
+		free(p);
+		free(name);
+		return (NULL);
+	}
+	p->name = name;
+	p->age = age;
+	p->owner = owner;
+	return (p);
 }
